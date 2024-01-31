@@ -1,0 +1,12 @@
+# EntityManager
+
+EntityManager類似於Connection的功能，而在JPA中EntityManager的建置是由EntityManagerFactory進行管理，後續會介紹如何進行EntityManagerFactory進行管理，此處範例則是使用Spring內建的EntityManagerFactory進行操作。
+
+```java
+@PersistenceContext
+private EntityManager em;
+```
+
+建立EntityManager 直接使用內建的EntityManagerFactory，所以會需要@PersistenceContext註解。
+
+而EntityManager就如同Repository一樣具有CRUD的功能，所以可以將EntityManager視為Repository，且EntityManager在操作上會更加彈性，可以自由控制commit、rollback等時機點，但同樣的也必須進行開關，所以操作上如同Connection一般，容易產生人為錯誤(Connection未關閉)。
